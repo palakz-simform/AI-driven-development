@@ -14,9 +14,14 @@ const router = createRouter({
       component: () => import('@/pages/ExplorePage.vue'),
     },
     {
-      path: '/profile/:id',
+      path: '/profile',
       name: 'profile',
       component: () => import('@/pages/ProfilePage.vue'),
+    },
+    {
+      path: '/upload',
+      name: 'upload',
+      component: () => import('@/components/PhotoUploadModal.vue'),
     },
   ],
 })
