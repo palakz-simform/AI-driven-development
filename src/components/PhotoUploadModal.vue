@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 interface Props {
   isOpen: boolean
+  isUploading?: boolean
+  error?: string | null
 }
 
-defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  isUploading: false,
+  error: null,
+})
 
 const emit = defineEmits<{
   close: []
@@ -15,35 +20,38 @@ const emit = defineEmits<{
 const title = ref('')
 const description = ref('')
 const imageUrl = ref('')
-const isLoading = ref(false)
 
 const isFormValid = computed(() => title.value.trim() && imageUrl.value.trim())
 
-const handleSubmit = async () => {
-  if (!isFormValid.value) return
-
-  isLoading.value = true
-  try {
-    emit('upload', {
-      title: title.value,
-      description: description.value,
-      imageUrl: imageUrl.value,
-    })
-    // Reset form
-    title.value = ''
-    description.value = ''
-    imageUrl.value = ''
-  } finally {
-    isLoading.value = false
-  }
-}
-
-const handleClose = () => {
+const resetForm = () => {
   title.value = ''
   description.value = ''
   imageUrl.value = ''
+}
+
+const handleSubmit = () => {
+  if (!isFormValid.value) return
+
+  emit('upload', {
+    title: title.value,
+    description: description.value,
+    imageUrl: imageUrl.value,
+  })
+}
+
+const handleClose = () => {
+  resetForm()
   emit('close')
 }
+
+watch(
+  () => props.isOpen,
+  (isOpen) => {
+    if (!isOpen) {
+      resetForm()
+    }
+  },
+)
 </script>
 
 <template>
@@ -67,6 +75,10 @@ const handleClose = () => {
       </div>
 
       <form @submit.prevent="handleSubmit" class="space-y-4">
+        <div v-if="error" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
+          {{ error }}
+        </div>
+
         <!-- Image URL Preview -->
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-2">Image URL</label>
@@ -116,10 +128,10 @@ const handleClose = () => {
           </button>
           <button
             type="submit"
-            :disabled="!isFormValid || isLoading"
+            :disabled="!isFormValid || isUploading"
             class="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {{ isLoading ? 'Uploading...' : 'Upload' }}
+            {{ isUploading ? 'Uploading...' : 'Upload' }}
           </button>
         </div>
       </form>

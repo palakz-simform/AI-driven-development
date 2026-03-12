@@ -12,9 +12,8 @@ interface Props {
 defineProps<Props>()
 
 const emit = defineEmits<{
-  'load-comments': []
   'post-comment': [{ text: string }]
-  'delete-comment': [{ id: number }]
+  'delete-comment': [{ id: string }]
 }>()
 
 const commentText = ref('')
@@ -28,7 +27,7 @@ const handleSubmit = async () => {
   showForm.value = false
 }
 
-const deleteComment = (id: number) => {
+const deleteComment = (id: string) => {
   if (confirm('Delete this comment?')) {
     emit('delete-comment', { id })
   }
@@ -41,10 +40,11 @@ const deleteComment = (id: number) => {
       <h3 class="font-semibold text-gray-900">Comments</h3>
       <button
         v-if="!isLoading"
-        @click="() => { showForm = !showForm; $emit('load-comments') }"
-        class="text-sm text-blue-500 hover:text-blue-600"
+        type="button"
+        @click="showForm = !showForm"
+        class="text-sm font-medium text-blue-500 hover:text-blue-600"
       >
-        {{ comments.length === 0 ? 'Load' : `${comments.length}` }}
+        {{ showForm ? 'Cancel' : 'Add comment' }}
       </button>
     </div>
 
@@ -99,7 +99,7 @@ const deleteComment = (id: number) => {
             :disabled="!commentText.trim() || isPosting"
             class="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {{ isPosting ? '...' : 'Post' }}
+            {{ isPosting ? 'Posting...' : 'Post' }}
           </button>
         </div>
       </form>

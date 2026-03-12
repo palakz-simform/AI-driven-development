@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
+export type CommentId = string
+
 export interface Comment {
-  id: number
-  photoId: number
+  id: CommentId
+  photoId: string
   userId: number
   username: string
   userAvatar: string
@@ -14,45 +16,59 @@ export interface Comment {
 }
 
 export interface CommentCreatePayload {
-  photoId: number
+  photoId: string
   text: string
 }
 
+const normalizePhotoKey = (photoId: string | number) => String(photoId)
+const normalizeCommentKey = (commentId: string | number) => String(commentId)
+
 export const useCommentStore = defineStore('comment', () => {
-  const comments = ref<Map<number, Comment[]>>(new Map())
+  const comments = ref<Map<string, Comment[]>>(new Map())
   const loading = ref(false)
   const error = ref<string | null>(null)
 
-  function getPhotoComments(photoId: number): Comment[] {
-    return comments.value.get(photoId) || []
+  function getPhotoComments(photoId: string | number): Comment[] {
+    return comments.value.get(normalizePhotoKey(photoId)) || []
   }
 
-  function setComments(photoId: number, newComments: Comment[]) {
-    comments.value.set(photoId, newComments)
+  function setComments(photoId: string | number, newComments: Comment[]) {
+    comments.value.set(normalizePhotoKey(photoId), newComments)
   }
 
-  function addComment(photoId: number, comment: Comment) {
-    const photoComments = comments.value.get(photoId) || []
+  function addComment(photoId: string | number, comment: Comment) {
+    const photoKey = normalizePhotoKey(photoId)
+    const photoComments = comments.value.get(photoKey) || []
     photoComments.unshift(comment)
-    comments.value.set(photoId, photoComments)
+    comments.value.set(photoKey, photoComments)
   }
 
-  function updateComment(photoId: number, commentId: number, updates: Partial<Comment>) {
-    const photoComments = comments.value.get(photoId) || []
-    const commentIndex = photoComments.findIndex((c) => c.id === commentId)
+  function updateComment(
+    photoId: string | number,
+    commentId: string | number,
+    updates: Partial<Comment>,
+  ) {
+    const photoKey = normalizePhotoKey(photoId)
+    const photoComments = comments.value.get(photoKey) || []
+    const commentIndex = photoComments.findIndex((comment) => {
+      return normalizeCommentKey(comment.id) === normalizeCommentKey(commentId)
+    })
     if (commentIndex !== -1) {
       photoComments[commentIndex] = { ...photoComments[commentIndex], ...updates } as Comment
     }
   }
 
-  function removeComment(photoId: number, commentId: number) {
-    const photoComments = comments.value.get(photoId) || []
-    const filtered = photoComments.filter((c) => c.id !== commentId)
-    comments.value.set(photoId, filtered)
+  function removeComment(photoId: string | number, commentId: string | number) {
+    const photoKey = normalizePhotoKey(photoId)
+    const photoComments = comments.value.get(photoKey) || []
+    const filtered = photoComments.filter((comment) => {
+      return normalizeCommentKey(comment.id) !== normalizeCommentKey(commentId)
+    })
+    comments.value.set(photoKey, filtered)
   }
 
-  function clearComments(photoId: number) {
-    comments.value.delete(photoId)
+  function clearComments(photoId: string | number) {
+    comments.value.delete(normalizePhotoKey(photoId))
   }
 
   function setLoading(isLoading: boolean) {

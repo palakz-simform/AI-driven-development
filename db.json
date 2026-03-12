@@ -112,7 +112,8 @@
       "id": "4502",
       "title": "demo",
       "description": "this is a flower image",
-      "imageUrl": "https://images.unsplash.com/photo-1530092285049-1c42085fd395?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VtbWVyJTIwZmxvd2Vyc3xlbnwwfHwwfHx8MA%3D%3D"
+      "imageUrl": "https://images.unsplash.com/photo-1530092285049-1c42085fd395?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VtbWVyJTIwZmxvd2Vyc3xlbnwwfHwwfHx8MA%3D%3D",
+      "likes": 3
     },
     {
       "id": "421c",
@@ -209,6 +210,24 @@
       "photoId": "1",
       "userId": 1,
       "createdAt": "2026-03-12T05:19:27.621Z"
+    },
+    {
+      "id": "2755",
+      "photoId": "4502",
+      "userId": 1,
+      "createdAt": "2026-03-12T06:01:37.212Z"
+    },
+    {
+      "id": "96fc",
+      "photoId": "4502",
+      "userId": 1,
+      "createdAt": "2026-03-12T06:01:41.630Z"
+    },
+    {
+      "id": "7e42",
+      "photoId": "4502",
+      "userId": 1,
+      "createdAt": "2026-03-12T06:01:43.910Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

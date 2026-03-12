@@ -24,10 +24,6 @@ export function usePhotoUpload() {
         title,
         description,
         imageUrl,
-      })
-
-      const photoWithUserData = {
-        ...newPhoto,
         userId,
         username,
         userAvatar,
@@ -36,10 +32,10 @@ export function usePhotoUpload() {
         comments: 0,
         createdAt: now,
         updatedAt: now,
-      }
+      })
 
-      photoStore.addPhoto(photoWithUserData)
-      return photoWithUserData
+      photoStore.addPhoto(newPhoto)
+      return newPhoto
     } catch (err) {
       const error = err instanceof Error ? err.message : 'Upload failed'
       uploadError.value = error

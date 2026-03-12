@@ -2,15 +2,17 @@
 import { computed } from 'vue'
 import type { Photo } from '@/stores/photo'
 
-interface Props {
-  photo: Photo
-}
-
 const emit = defineEmits<{
   like: []
   comment: []
   view: []
 }>()
+
+interface Props {
+  photo: Photo
+}
+
+const props = defineProps<Props>()
 
 const formattedDate = computed(() => {
   const date = new Date(props.photo.createdAt)
@@ -20,20 +22,24 @@ const formattedDate = computed(() => {
     year: 'numeric',
   })
 })
-
-const props = defineProps<Props>()
 </script>
 
 <template>
   <div class="overflow-hidden rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
     <!-- Photo Image -->
-    <div class="relative aspect-square overflow-hidden bg-gray-100 cursor-pointer" @click="emit('view')">
+    <button
+      type="button"
+      class="relative block aspect-square w-full overflow-hidden bg-gray-100 text-left"
+      @click="emit('view')"
+    >
       <img
         :src="photo.imageUrl"
         :alt="photo.title"
+        loading="lazy"
+        decoding="async"
         class="h-full w-full object-cover hover:scale-105 transition-transform duration-300"
       />
-    </div>
+    </button>
 
     <!-- Photo Info -->
     <div class="p-4">

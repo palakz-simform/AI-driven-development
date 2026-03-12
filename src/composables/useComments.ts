@@ -2,9 +2,9 @@ import { ref, computed } from 'vue'
 import { commentApi } from '@/api/comments'
 import { photoApi } from '@/api/photos'
 import { useCommentStore } from '@/stores/comment'
-import { usePhotoStore } from '@/stores/photo'
+import { usePhotoStore, type PhotoId } from '@/stores/photo'
 
-export function useComments(photoId: number) {
+export function useComments(photoId: PhotoId) {
   const commentStore = useCommentStore()
   const photoStore = usePhotoStore()
   const isLoading = ref(false)
@@ -55,7 +55,7 @@ export function useComments(photoId: number) {
     }
   }
 
-  async function deleteComment(commentId: number) {
+  async function deleteComment(commentId: string | number) {
     try {
       error.value = null
       await commentApi.delete(commentId)
