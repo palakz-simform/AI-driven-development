@@ -1,37 +1,215 @@
 {
-  "photos": [
-    {
-      "id": 1,
-      "title": "Sunset at the beach",
-      "url": "https://picsum.photos/seed/beach/800/600",
-      "userId": 1,
-      "createdAt": "2026-03-01T10:00:00.000Z"
-    },
-    {
-      "id": 2,
-      "title": "Mountain hike",
-      "url": "https://picsum.photos/seed/mountain/800/600",
-      "userId": 1,
-      "createdAt": "2026-03-02T12:30:00.000Z"
-    },
-    {
-      "id": 3,
-      "title": "City lights",
-      "url": "https://picsum.photos/seed/city/800/600",
-      "userId": 2,
-      "createdAt": "2026-03-03T18:45:00.000Z"
-    }
-  ],
   "users": [
     {
-      "id": 1,
-      "name": "Alice",
-      "email": "alice@example.com"
+      "id": "1",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=1",
+      "bio": "Photography enthusiast and travel lover",
+      "followersCount": 150,
+      "followingCount": 75,
+      "photosCount": 42,
+      "followed": false,
+      "createdAt": "2024-01-15T10:00:00Z"
     },
     {
-      "id": 2,
-      "name": "Bob",
-      "email": "bob@example.com"
+      "id": "2",
+      "username": "jane_smith",
+      "email": "jane@example.com",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=2",
+      "bio": "Nature photographer | Videographer",
+      "followersCount": 280,
+      "followingCount": 120,
+      "photosCount": 67,
+      "followed": false,
+      "createdAt": "2024-01-10T09:30:00Z"
+    },
+    {
+      "id": "3",
+      "username": "alex_photo",
+      "email": "alex@example.com",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=3",
+      "bio": "Urban explorer | Street photography",
+      "followersCount": 95,
+      "followingCount": 50,
+      "photosCount": 28,
+      "followed": false,
+      "createdAt": "2024-02-01T14:20:00Z"
     }
-  ]
+  ],
+  "photos": [
+    {
+      "id": "1",
+      "title": "Sunset at the Beach",
+      "description": "Beautiful golden hour at the beach with stunning sky colors.",
+      "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+      "userId": 1,
+      "username": "john_doe",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=1",
+      "likes": 236,
+      "liked": false,
+      "comments": 12,
+      "createdAt": "2024-03-10T18:45:00Z",
+      "updatedAt": "2024-03-10T18:45:00Z"
+    },
+    {
+      "id": "2",
+      "title": "Mountain Peak",
+      "description": "Hiking to the top of the mountain with an amazing view.",
+      "imageUrl": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+      "userId": 2,
+      "username": "jane_smith",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=2",
+      "likes": 456,
+      "liked": false,
+      "comments": 28,
+      "createdAt": "2024-03-09T08:15:00Z",
+      "updatedAt": "2024-03-09T08:15:00Z"
+    },
+    {
+      "id": "3",
+      "title": "City Lights",
+      "description": "Urban photography at night with city lights reflection.",
+      "imageUrl": "https://images.unsplash.com/photo-1480714378408-67a8e5ce9338?w=800",
+      "userId": 3,
+      "username": "alex_photo",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=3",
+      "likes": 189,
+      "liked": false,
+      "comments": 15,
+      "createdAt": "2024-03-08T20:30:00Z",
+      "updatedAt": "2024-03-08T20:30:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Forest Walk",
+      "description": "Peaceful walk through the dense green forest.",
+      "imageUrl": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
+      "userId": 2,
+      "username": "jane_smith",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=2",
+      "likes": 312,
+      "liked": false,
+      "comments": 18,
+      "createdAt": "2024-03-07T15:00:00Z",
+      "updatedAt": "2024-03-07T15:00:00Z"
+    },
+    {
+      "id": "5",
+      "title": "Ocean Waves",
+      "description": "Capturing the power and beauty of ocean waves.",
+      "imageUrl": "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800",
+      "userId": 1,
+      "username": "john_doe",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=1",
+      "likes": 278,
+      "liked": false,
+      "comments": 22,
+      "createdAt": "2024-03-06T12:45:00Z",
+      "updatedAt": "2024-03-06T12:45:00Z"
+    },
+    {
+      "id": "4502",
+      "title": "demo",
+      "description": "this is a flower image",
+      "imageUrl": "https://images.unsplash.com/photo-1530092285049-1c42085fd395?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VtbWVyJTIwZmxvd2Vyc3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "id": "421c",
+      "title": "Flower",
+      "description": "This is a flower image",
+      "imageUrl": "https://i.pinimg.com/236x/c0/d8/0a/c0d80a5d314d69658afa0e82a0d9357b.jpg"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "photoId": 1,
+      "userId": 2,
+      "username": "jane_smith",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=2",
+      "text": "Absolutely stunning! The colors are amazing.",
+      "likes": 5,
+      "createdAt": "2024-03-10T19:15:00Z",
+      "updatedAt": "2024-03-10T19:15:00Z"
+    },
+    {
+      "id": "2",
+      "photoId": 1,
+      "userId": 3,
+      "username": "alex_photo",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=3",
+      "text": "Great composition and lighting!",
+      "likes": 3,
+      "createdAt": "2024-03-10T20:00:00Z",
+      "updatedAt": "2024-03-10T20:00:00Z"
+    },
+    {
+      "id": "3",
+      "photoId": 2,
+      "userId": 1,
+      "username": "john_doe",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=1",
+      "text": "This is breathtaking! Where is this location?",
+      "likes": 8,
+      "createdAt": "2024-03-09T09:00:00Z",
+      "updatedAt": "2024-03-09T09:00:00Z"
+    },
+    {
+      "id": "4",
+      "photoId": 3,
+      "userId": 2,
+      "username": "jane_smith",
+      "userAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=2",
+      "text": "The reflection is perfect! Love it.",
+      "likes": 6,
+      "createdAt": "2024-03-08T21:30:00Z",
+      "updatedAt": "2024-03-08T21:30:00Z"
+    }
+  ],
+  "likes": [
+    {
+      "id": "1",
+      "photoId": 1,
+      "userId": 2,
+      "createdAt": "2024-03-10T19:10:00Z"
+    },
+    {
+      "id": "2",
+      "photoId": 1,
+      "userId": 3,
+      "createdAt": "2024-03-10T19:50:00Z"
+    },
+    {
+      "id": "3",
+      "photoId": 2,
+      "userId": 1,
+      "createdAt": "2024-03-09T08:45:00Z"
+    },
+    {
+      "id": "4",
+      "photoId": 3,
+      "userId": 1,
+      "createdAt": "2024-03-08T20:40:00Z"
+    },
+    {
+      "id": "5",
+      "photoId": 3,
+      "userId": 2,
+      "createdAt": "2024-03-08T21:20:00Z"
+    },
+    {
+      "id": "1cb8",
+      "photoId": "1",
+      "userId": 1,
+      "createdAt": "2026-03-12T05:19:15.622Z"
+    },
+    {
+      "id": "670b",
+      "photoId": "1",
+      "userId": 1,
+      "createdAt": "2026-03-12T05:19:27.621Z"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
